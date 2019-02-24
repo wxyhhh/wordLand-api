@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wordland.dao.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.wordland.model.Account" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="account_nickname" property="accountNickname" jdbcType="VARCHAR" />
+    <result column="account_cet4" property="accountCet4" jdbcType="INTEGER" />
+    <result column="account_cet4_today" property="accountCet4Today" jdbcType="INTEGER" />
+    <result column="account_cet6" property="accountCet6" jdbcType="INTEGER" />
+    <result column="account_cet6_today" property="accountCet6Today" jdbcType="INTEGER" />
+    <result column="account_counter" property="accountCounter" jdbcType="INTEGER" />
+    <result column="account_time" property="accountTime" jdbcType="DATE" />
+    <result column="account_user_id" property="accountUserId" jdbcType="INTEGER" />
+    <result column="account_setting" property="accountSetting" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, account_nickname, account_cet4, account_cet4_today, account_cet6, account_cet6_today, 
+    account_counter, account_time, account_user_id, account_setting
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wordland.model.AccountExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from myapp_account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from myapp_account
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from myapp_account
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wordland.model.Account" >
+    insert into myapp_account (id, account_nickname, account_cet4, 
+      account_cet4_today, account_cet6, account_cet6_today, 
+      account_counter, account_time, account_user_id, 
+      account_setting)
+    values (#{id,jdbcType=INTEGER}, #{accountNickname,jdbcType=VARCHAR}, #{accountCet4,jdbcType=INTEGER}, 
+      #{accountCet4Today,jdbcType=INTEGER}, #{accountCet6,jdbcType=INTEGER}, #{accountCet6Today,jdbcType=INTEGER}, 
+      #{accountCounter,jdbcType=INTEGER}, #{accountTime,jdbcType=DATE}, #{accountUserId,jdbcType=INTEGER}, 
+      #{accountSetting,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wordland.model.Account" >
+    insert into myapp_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="accountNickname != null" >
+        account_nickname,
+      </if>
+      <if test="accountCet4 != null" >
+        account_cet4,
+      </if>
+      <if test="accountCet4Today != null" >
+        account_cet4_today,
+      </if>
+      <if test="accountCet6 != null" >
+        account_cet6,
+      </if>
+      <if test="accountCet6Today != null" >
+        account_cet6_today,
+      </if>
+      <if test="accountCounter != null" >
+        account_counter,
+      </if>
+      <if test="accountTime != null" >
+        account_time,
+      </if>
+      <if test="accountUserId != null" >
+        account_user_id,
+      </if>
+      <if test="accountSetting != null" >
+        account_setting,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountNickname != null" >
+        #{accountNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCet4 != null" >
+        #{accountCet4,jdbcType=INTEGER},
+      </if>
+      <if test="accountCet4Today != null" >
+        #{accountCet4Today,jdbcType=INTEGER},
+      </if>
+      <if test="accountCet6 != null" >
+        #{accountCet6,jdbcType=INTEGER},
+      </if>
+      <if test="accountCet6Today != null" >
+        #{accountCet6Today,jdbcType=INTEGER},
+      </if>
+      <if test="accountCounter != null" >
+        #{accountCounter,jdbcType=INTEGER},
+      </if>
+      <if test="accountTime != null" >
+        #{accountTime,jdbcType=DATE},
+      </if>
+      <if test="accountUserId != null" >
+        #{accountUserId,jdbcType=INTEGER},
+      </if>
+      <if test="accountSetting != null" >
+        #{accountSetting,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wordland.model.AccountExample" resultType="java.lang.Integer" >
+    select count(*) from myapp_account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update myapp_account
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountNickname != null" >
+        account_nickname = #{record.accountNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountCet4 != null" >
+        account_cet4 = #{record.accountCet4,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountCet4Today != null" >
+        account_cet4_today = #{record.accountCet4Today,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountCet6 != null" >
+        account_cet6 = #{record.accountCet6,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountCet6Today != null" >
+        account_cet6_today = #{record.accountCet6Today,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountCounter != null" >
+        account_counter = #{record.accountCounter,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountTime != null" >
+        account_time = #{record.accountTime,jdbcType=DATE},
+      </if>
+      <if test="record.accountUserId != null" >
+        account_user_id = #{record.accountUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.accountSetting != null" >
+        account_setting = #{record.accountSetting,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update myapp_account
+    set id = #{record.id,jdbcType=INTEGER},
+      account_nickname = #{record.accountNickname,jdbcType=VARCHAR},
+      account_cet4 = #{record.accountCet4,jdbcType=INTEGER},
+      account_cet4_today = #{record.accountCet4Today,jdbcType=INTEGER},
+      account_cet6 = #{record.accountCet6,jdbcType=INTEGER},
+      account_cet6_today = #{record.accountCet6Today,jdbcType=INTEGER},
+      account_counter = #{record.accountCounter,jdbcType=INTEGER},
+      account_time = #{record.accountTime,jdbcType=DATE},
+      account_user_id = #{record.accountUserId,jdbcType=INTEGER},
+      account_setting = #{record.accountSetting,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wordland.model.Account" >
+    update myapp_account
+    <set >
+      <if test="accountNickname != null" >
+        account_nickname = #{accountNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCet4 != null" >
+        account_cet4 = #{accountCet4,jdbcType=INTEGER},
+      </if>
+      <if test="accountCet4Today != null" >
+        account_cet4_today = #{accountCet4Today,jdbcType=INTEGER},
+      </if>
+      <if test="accountCet6 != null" >
+        account_cet6 = #{accountCet6,jdbcType=INTEGER},
+      </if>
+      <if test="accountCet6Today != null" >
+        account_cet6_today = #{accountCet6Today,jdbcType=INTEGER},
+      </if>
+      <if test="accountCounter != null" >
+        account_counter = #{accountCounter,jdbcType=INTEGER},
+      </if>
+      <if test="accountTime != null" >
+        account_time = #{accountTime,jdbcType=DATE},
+      </if>
+      <if test="accountUserId != null" >
+        account_user_id = #{accountUserId,jdbcType=INTEGER},
+      </if>
+      <if test="accountSetting != null" >
+        account_setting = #{accountSetting,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wordland.model.Account" >
+    update myapp_account
+    set account_nickname = #{accountNickname,jdbcType=VARCHAR},
+      account_cet4 = #{accountCet4,jdbcType=INTEGER},
+      account_cet4_today = #{accountCet4Today,jdbcType=INTEGER},
+      account_cet6 = #{accountCet6,jdbcType=INTEGER},
+      account_cet6_today = #{accountCet6Today,jdbcType=INTEGER},
+      account_counter = #{accountCounter,jdbcType=INTEGER},
+      account_time = #{accountTime,jdbcType=DATE},
+      account_user_id = #{accountUserId,jdbcType=INTEGER},
+      account_setting = #{accountSetting,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
