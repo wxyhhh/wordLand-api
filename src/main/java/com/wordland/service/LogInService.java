@@ -1,5 +1,8 @@
 package com.wordland.service;
 
+import java.util.HashMap;
+
 public interface LogInService {
-    Integer doLogIn(String email, String password);
+    Integer checkLogIn(String email, String password);
+    HashMap<String, Object> doLogIn(String email);
 }

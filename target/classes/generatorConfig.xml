@@ -111,11 +111,27 @@
                <!--enableDeleteByExample="false" enableSelectByExample="true"-->
                <!--selectByExampleQueryId="true">-->
         <!--</table>-->
-        <table tableName="user" domainObjectName="userAccount"
+        <table tableName="auth_user" domainObjectName="AuthUser"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="false" enableSelectByExample="true"
                selectByExampleQueryId="true">
         </table>
+        <!--<table tableName="myapp_cet4" domainObjectName="CET4Word"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+        <!--<table tableName="myapp_cet6" domainObjectName="CET6Word"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+        <!--<table tableName="myapp_custom" domainObjectName="Custom"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+
 
         <!--<table tableName="company_base_info" domainObjectName="CompanyBaseInfo"-->
                <!--enableCountByExample="true" enableUpdateByExample="true"-->

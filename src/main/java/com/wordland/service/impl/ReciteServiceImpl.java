@@ -21,27 +21,27 @@ public class ReciteServiceImpl implements ReciteService {
     @Autowired
     private CustomMapper customMapper;
 
-    @Override
-    public HashMap<String, Object> getCET4Schedule(String user){
-
-    }
-    @Override
-    public HashMap<String, Object> getCET6Schedule(String user){
-
-    }
-
-    @Override
-    public HashMap<String, Object> getCET4Next(String user){
-
-    }
-
-    @Override
-    public HashMap<String, Object> getCET6Next(String user){
-
-    }
-
-    @Override
-    public boolean collectWord(String user, Integer presentNo, Integer catalog){
-
-    }
+//    @Override
+//    public HashMap<String, Object> getCET4Schedule(String user){
+//
+//    }
+//    @Override
+//    public HashMap<String, Object> getCET6Schedule(String user){
+//
+//    }
+//
+//    @Override
+//    public HashMap<String, Object> getCET4Next(String user){
+//
+//    }
+//
+//    @Override
+//    public HashMap<String, Object> getCET6Next(String user){
+//
+//    }
+//
+//    @Override
+//    public boolean collectWord(String user, Integer presentNo, Integer catalog){
+//
+//    }
 }
